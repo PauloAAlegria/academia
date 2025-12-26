@@ -1,0 +1,75 @@
+/* secção sobre */
+/* Definição do estilo para a seção Sobre */
+#about {  
+  padding: 60px 20px; /* Adicionando padding lateral */
+  background-color: #f9f9f9; /* Cor suave para o fundo */  
+}
+  
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px; /* Limita a largura da seção para telas grandes */
+  margin: 0 auto; /* Centraliza a seção */
+  margin-top: 50px;
+  min-height: 90vh;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.about-text h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text h2 {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+  }  
+}
+/* end secção sobre */

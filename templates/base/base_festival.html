@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt">
+    
+  <head>
+
+    {% include 'partials/head/_head_festival.html' %}
+
+    <title>{% block title %}{% endblock  %}AMDF</title>
+
+  </head>
+
+  <body>
+    
+    {% include "partials/navbar/_navbar_festival.html" %}
+
+    {% block content %}{% endblock content %}      
+
+    {% include "partials/footer/_footer.html" %}    
+    
+  </body>
+
+</html>

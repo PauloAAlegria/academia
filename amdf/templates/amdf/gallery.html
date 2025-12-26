@@ -1,0 +1,50 @@
+{% extends "base/base_gallery.html" %}
+{% load static %}
+   
+{% block content %}
+
+
+<!-- seção da galeria -->
+  <section class="galeria" id="galeria">
+    <h2>Galeria</h2>
+    <div class="galeria-container">
+
+      {% for midia in midias %}
+        <div class="item-galeria">
+          {% if midia.image %}
+            <img src="{{ midia.image.url }}" alt="{{ midia.title }}" class="imagem">
+          {% elif midia.video %}            
+            <video src="{{ midia.video.url }}" class="imagem" playsinline loop controls></video>
+          {% endif %}
+          {% if midia.title %}
+            <p class="titulo-midia">{{ midia.title }}</p>
+          {% endif %}
+        </div>
+        {% empty %}
+        <h2>Em Manutenção</h2>
+      {% endfor %}
+
+    </div>
+
+    <!-- Paginação (opcional, se estiver usando) -->
+    <div class="paginacao" id="paginacao"></div>
+  </section>
+
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" id="fechar">X</span>
+      <img src="" alt="Imagem ampliada" id="imagem-modal">
+      <video id="video-modal" controls style="display:none;"></video>
+      <div class="navegacao">
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
+      </div>
+      <div class="dots-container" id="dotsContainer"></div>
+
+    </div>
+  </div>
+  <!-- end seção da galeria -->
+
+{% endblock content %}

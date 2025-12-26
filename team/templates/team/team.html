@@ -1,0 +1,104 @@
+{% extends "base/base_team.html" %}
+{% load static %}    
+
+{% block content %}
+
+<!-- seção das equipas -->
+<section id="team" class="team-section">
+  {% if grupos_pessoas.direcao or grupos_pessoas.professores or grupos_pessoas.secretaria or grupos_pessoas.funcionarios %}
+    <h1 class="team-header" id="docente-header">Corpo Docente</h1>
+  
+
+  <!-- Direção -->
+  {% if grupos_pessoas.direcao %}
+    <h2 class="category-title">Direção</h2>
+    <div class="team-container">
+      {% for pessoa in grupos_pessoas.direcao %}
+        <div class="team-member">
+          {% if pessoa.image %}
+            <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
+          {% else %}
+            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
+          {% endif %}
+          <h3>{{ pessoa.name }}</h3>
+          <p>{{ pessoa.get_positions_display }}</p>
+          {% if pessoa.has_portfolio %}
+            <a href="{% url 'team:portfolio' pessoa.slug %}" class="btn">Saber mais</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Professores -->
+  {% if grupos_pessoas.professores %}
+    <h2 class="category-title">Professores</h2>
+    <div class="team-container">
+      {% for pessoa in grupos_pessoas.professores %}
+        <div class="team-member">
+          {% if pessoa.image %}
+            <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
+          {% else %}
+            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
+          {% endif %}
+          <h3>{{ pessoa.name }}</h3>
+          <p>{{ pessoa.get_positions_display }}</p>
+          {% if pessoa.has_portfolio %}
+            <a href="{% url 'team:portfolio' pessoa.slug %}" class="btn">Saber mais</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <h1 class="team-header" id="staff-header">Corpo Não Docente</h1>  
+
+  <!-- Secretaria -->
+  {% if grupos_pessoas.secretaria %}
+    <h2 class="category-title">Secretaria</h2>
+    <div class="team-container">
+      {% for pessoa in grupos_pessoas.secretaria %}
+        <div class="team-member">
+          {% if pessoa.image %}
+            <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
+          {% else %}
+            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
+          {% endif %}
+          <h3>{{ pessoa.name }}</h3>
+          <p>{{ pessoa.get_positions_display }}</p>
+          {% if pessoa.has_portfolio %}
+            <a href="{% url 'team:portfolio' pessoa.slug %}" class="btn">Saber mais</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Funcionários -->
+  {% if grupos_pessoas.funcionarios %}
+    <h2 class="category-title">Biblioteca/Reprografia</h2>
+    <div class="team-container">
+      {% for pessoa in grupos_pessoas.funcionarios %}
+        <div class="team-member">
+          {% if pessoa.image %}
+            <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
+          {% else %}
+            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
+          {% endif %}
+          <h3>{{ pessoa.name }}</h3>
+          <p>{{ pessoa.get_positions_display }}</p>
+          {% if pessoa.has_portfolio %}
+            <a href="{% url 'team:portfolio' pessoa.slug %}" class="btn">Saber mais</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% else %}
+    <h1>Em Manutenção</h1>
+  {% endif %}
+</section>
+<!-- end seção das equipas -->
+
+{% endblock content %}

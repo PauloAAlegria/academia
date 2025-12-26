@@ -1,0 +1,55 @@
+{% load static %}
+
+<!-- Navbar -->
+<nav id="navbar" class="navbar">
+    <div class="container">
+    {% comment %} este include vai buscar o logo que está criado em logo.html {% endcomment %}
+    <div class="logo">{% include "partials/navbar/logo.html" %}</div>
+    <!-- Menu de navegação para desktop -->
+    <div class="menu" id="desktopMenu">
+        <a href="{% url 'home:home' %}#hero">Início</a>
+        <a href="{% url 'home:home' %}#about">Historial</a>
+        <div class="dropdown" id="dropdown">
+        <span class="dropdown-toggle">Academia</span>
+        <div class="dropdown-menu">
+            <a href="{% url 'home:home' %}#cursos">Oferta Educativa</a>
+            <a href="{% url 'team:team' %}">Comunidade Educativa</a>
+            <a href="{% url 'home:gallery' %}">Galeria</a>
+            <a href="{% url 'event:event' %}">Atividades</a>
+            <a href="{% url 'home:link' %}">Documentos</a>
+            <a href="#polo">Polo Penamacor</a>
+        </div>
+        </div>
+        <a href="{% url 'festival:festival' %}">Festival / Concurso</a>
+        <a href="#contato">Contato</a>
+    </div>
+
+    <!-- Botão Hamburger para menu mobile -->
+    <div class="hamburger" id="hamburger">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+    </div>
+    </div>
+</nav>
+
+<!-- Menu mobile -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="{% url 'home:home' %}#hero">Início</a>
+    <a href="{% url 'home:home' %}#about">Historial</a>
+    <div class="mobile-dropdown">
+    <div class="mobile-dropdown-toggle" id="mobileDropdownToggle">Academia ▼</div>
+    <div class="mobile-dropdown-menu" id="mobileDropdown">
+        <a href="{% url 'home:home' %}#cursos">Oferta Educativa</a>
+        <a href="{% url 'team:team' %}">Comunidade Educativa</a>
+        <a href="{% url 'home:gallery' %}">Galeria</a>
+        <a href="{% url 'event:event' %}">Atividades</a>
+        <a href="{% url 'home:link' %}">Documentos</a>
+        <a href="#polo">Polo Penamacor</a>
+    </div>
+    </div>
+    <a href="{% url 'festival:festival' %}">Festival / Concurso</a>
+    <a href="#contato">Contato</a>
+</div>
+<!-- end navbar -->
+ 

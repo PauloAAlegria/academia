@@ -1,0 +1,46 @@
+{% extends "base/base_festival.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- seção do festival -->
+<section class="festival-section" id="festival">
+  {% if has_festival_info %}
+    <div class="section-header">
+      <h2>Festival Internacional Cidade do Fundão</h2>
+    </div>
+
+    <div class="image-container">
+      {% if festivals.img %}
+      <img src="{{ festivals.img.url }}" alt="Imagem do Festival">
+      {% endif %}
+    </div>
+
+    <div class="festival-details">
+      <div class="festival-description">
+        <p>{{ festivals.description | safe }}</p>      
+      </div>
+      <div class="festival-info">
+        <h3>Informações</h3>
+        <ul>
+          {% if festivals.link or festivals.link_name %}
+            <li><strong>Regulamento:</strong><a href="{{ festivals.link }}"> {{ festivals.link_name }}</a></li>
+          {% endif %}
+          <li><strong>Data:</strong> {{ festivals.begin_date }} - {{ festivals.end_date }}</li>
+          <li><strong>Local:</strong> {{ festivals.address }}</li>          
+        </ul>
+      </div>
+    </div>
+  {% else %}
+    <div class="section-header">
+      <h2>Festival Internacional Cidade do Fundão</h2>
+    </div>
+    <div class="section-header">
+      <p><h2 style="color: #888b94ff;">Brevemente</h2></p>
+    </div>
+  {% endif %}
+</section>
+
+<!-- end seção do festival -->
+
+{% endblock content %}

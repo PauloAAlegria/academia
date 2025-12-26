@@ -1,0 +1,11 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div id="content" class="logout-confirmation">
+    <h1>{% trans 'Logout' %}</h1>
+    <p>{% trans "You have been successfully logged out." %}</p>
+    <p><a href="{% url 'home:home' %}">{% trans "Return to homepage" %}</a></p>
+  </div>
+{% endblock %}
+

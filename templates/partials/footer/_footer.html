@@ -1,0 +1,74 @@
+{% load static %}
+
+<!-- seção do footer -->
+<section id="contato" class="footer">
+  <div class="footer-container">
+    <!-- Lado Esquerdo -->
+    <div class="footer-left">
+      <h2 class="footer-title">Academia de Música e Dança do Fundão</h2>
+
+      <div class="footer-logos">
+        {% if footer.logo_amdf %}
+        <img src="{{ footer.logo_amdf.url }}" alt="Logo 1" />
+        {% endif %}
+        {% if footer.logo_sc %}
+        <img src="{{ footer.logo_sc.url }}" alt="Logo 2" />
+        {% endif %}
+        {% if footer.logo_ed %}
+        <img src="{{ footer.logo_ed.url }}" alt="Logo 3" />
+        {% endif %}
+      </div>
+
+      <div class="footer-socials">
+        {% if footer.link_facebook %}
+          <a href="{{ footer.link_facebook }}" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        {% endif %}
+        {% if footer.link_instagram %}
+          <a href="{{ footer.link_instagram }}" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Lado Direito -->
+    <div class="footer-right">
+      <h2 class="footer-title">Academia de Música e Dança do Fundão</h2>
+      {% if footer.address %}
+      <p>{{ footer.address|safe }}</p>
+      {% endif %}
+      {% if footer.contact %}
+      <p>Tel: {{ footer.contact }}</p>
+      {% endif %}
+      {% if footer.email %}
+      <p>Email: {{ footer.email }}</p>
+      {% endif %}
+      {% if footer.time %}
+      <p>Horário: {{ footer.time }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Rodapé inferior -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 Academia de Música e Dança do Fundão. Todos os direitos reservados.</p>
+    <p>Desenvolvido por 
+    {% if dev_link and dev_link.dev %}
+      <a href="{{ dev_link.dev }}" target="_blank">Paulo Alegria</a>
+    {% else %}
+      <a href="#">Paulo Alegria</a>
+    {% endif %}</p>   
+    
+    <br> <a href={% url 'admin:index' %}>Admin</a>    
+
+  </div>
+</section>
+<!-- end seção do footer -->
+
+<script src="{%static 'assets/js/script.js' %}"></script>
+<script src="{%static 'assets/js/event_pagination.js' %}"></script>
+<script src="{%static 'assets/js/team.js' %}"></script>
+<script src="{%static 'assets/js/gallery_modal.js' %}"></script>
+<script src="{%static 'assets/js/gallery_pagination.js' %}"></script>

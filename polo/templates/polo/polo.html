@@ -1,0 +1,122 @@
+{% extends "base/base_polo.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- seção de penamacor -->
+<section class="equipa-sec" id="polo">
+  <div class="equipa-container">
+    <h1 class="equipa-titulo">Polo de Penamacor</h1>
+
+    {% if grupo_pessoas.direcao or grupo_pessoas.coordenacao or grupo_pessoas.professores %}
+    <h3 class="equipa-subtitulo"><strong>Corpo Docente</strong></h3>
+    {% endif %}
+
+    <!-- Corpo Docente - Direção -->
+    {% if grupo_pessoas.direcao %}
+      <div class="equipa-bloco">      
+        <h3 class="equipa-subtitulo">Direção</h3>
+        <div class="equipa-pessoas">
+          {% for person in grupo_pessoas.direcao %}
+            <div class="equipa-card">
+              {% if person.image %}
+                <img src="{{ person.image.url }}" alt="{{ person.name }}" class="equipa-foto">
+              {% endif %}
+              <p class="equipa-nome">{{ person.name }}</p>
+              {% for position in person.positions.all %}
+                <p class="equipa-cargo">{{ position.title }}</p>
+              {% endfor %}
+            </div>
+          {% empty %}
+            <p>Sem membros nesta seção.</p>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Coordenação -->
+    {% if grupo_pessoas.coordenacao %}
+      <div class="equipa-bloco">
+        <h3 class="equipa-subtitulo">Coordenação</h3>
+        <div class="equipa-pessoas">
+          {% for person in grupo_pessoas.coordenacao %}
+            <div class="equipa-card">
+              {% if person.image %}
+                <img src="{{ person.image.url }}" alt="{{ person.name }}" class="equipa-foto">
+              {% endif %}
+              <p class="equipa-nome">{{ person.name }}</p>
+              {% for position in person.positions.all %}
+                <p class="equipa-cargo">{{ position.title }}</p>
+              {% endfor %}
+            </div>
+          {% empty %}
+            <p>Sem membros nesta seção.</p>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Professores -->
+    {% if grupo_pessoas.professores %}
+      <div class="equipa-bloco">
+        <h3 class="equipa-subtitulo">Professores</h3>
+        <div class="equipa-pessoas">
+          {% for person in grupo_pessoas.professores %}
+            <div class="equipa-card">
+              {% if person.image %}
+                <img src="{{ person.image.url }}" alt="{{ person.name }}" class="equipa-foto">
+              {% endif %}
+              <p class="equipa-nome">{{ person.name }}</p>
+              {% for position in person.positions.all %}
+                <p class="equipa-cargo">{{ position.title }}</p>
+              {% endfor %}
+            </div>
+          {% empty %}
+            <p>Sem membros nesta seção.</p>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if grupo_pessoas.funcionarios %}
+      <h3 class="equipa-subtitulo"><strong>Corpo não Docente</strong></h3>
+
+      <!-- Funcionários (Corpo não Docente) -->      
+      <div class="equipa-bloco">      
+        <h3 class="equipa-subtitulo">Secretaria / Reprografia</h3>
+        <div class="equipa-pessoas">
+          {% for person in grupo_pessoas.funcionarios %}
+            <div class="equipa-card">
+              {% if person.image %}
+                <img src="{{ person.image.url }}" alt="{{ person.name }}" class="equipa-foto">
+              {% endif %}
+              <p class="equipa-nome">{{ person.name }}</p>
+              {% for position in person.positions.all %}
+                <p class="equipa-cargo">{{ position.title }}</p>
+              {% endfor %}
+            </div>
+          {% empty %}
+            <p>Sem membros nesta seção.</p>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}    
+
+    <!-- Contatos -->
+    <div class="equipa-contato">
+      {% if contato.address or contato.contact or contato.email or contato.time %}
+      <h3 class="equipa-subtitulo">Contactos</h3>
+      <p class="equipa-info"><strong>Morada:</strong> {{ contato.address | safe }}</p> 
+      </br>     
+      <p class="equipa-info"><strong>Tel:</strong> {{ contato.contact }}</p>
+      <p class="equipa-info"><strong>Email:</strong> {{ contato.email }}</p>
+      <p class="equipa-info"><strong>Horário:</strong> {{ contato.time }}</p> 
+      {% else %}
+       <h3 class="equipa-subtitulo" style="color: #888b94ff;">Em Manutenção</h3>
+      {% endif %}    
+    </div>
+  </div>
+</section>
+<!-- end seção de penamacor -->
+
+{% endblock content %}

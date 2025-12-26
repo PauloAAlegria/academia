@@ -1,0 +1,247 @@
+/* Hero Section com a imagem de fundo */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;  
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding-left: 100px;
+  background: rgba(0, 0, 0, 0.4); /* escurecimento */
+}
+
+.hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* A imagem ocupa toda a área da seção */
+  z-index: -1; /* A imagem fica atrás do conteúdo */  
+}
+
+.hero-content {
+  z-index: 1; /* Garante que o conteúdo fique sobre a imagem */
+  max-width: 90%;
+  text-align: left;
+  padding-left: 4rem;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;    
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) { 
+  .hero {      
+    padding: 20px;
+  }  
+
+  .hero-content {
+    padding-left: 0.5rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+/* end Hero Section com a imagem de fundo */
+
+/* ############################################################ */
+/* ############################################################ */
+
+/* seção sobre */
+/* Definição do estilo para a seção Sobre */
+#about {  
+  padding: 60px 20px; /* Adicionando padding lateral */
+  background-color: #f9f9f9; /* Cor suave para o fundo */
+}
+  
+.about-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px; /* Limita a largura da seção para telas grandes */
+  margin: 0 auto; /* Centraliza a seção */
+  min-height: 90vh;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.about-text h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 500px;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Estilo do botão */
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #111827;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #374151;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text h2 {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+/* end secção sobre */
+
+/* ############################################################ */
+/* ############################################################ */
+
+/* Secção Cursos - base */
+.courses-section {
+  padding: 60px 20px;
+  background: #e5e7eb;
+  min-height: 90vh;
+  scroll-margin-top: 60px; /* ajuste para o tamanho da navbar */
+}
+
+.courses-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}  
+
+.courses-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;    
+}
+
+/* Grid de Cursos */
+.courses-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.course-card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;  
+  color: #45150d;
+}
+
+.course-card p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.course-card .btn {
+  text-decoration: none;
+  padding: 10px 20px;  
+  background-color: #111827;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.course-card .btn:hover {
+  background-color: #374151;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .courses-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .course-card {
+    max-width: 100%;
+  }
+
+  .courses-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+/* end Secção Cursos */

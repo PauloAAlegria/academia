@@ -1,0 +1,110 @@
+.equipa-sec {
+  background-color: #e5e7eb;
+  padding: 80px 20px;
+  color: #333;
+  min-height: 90vh;
+}
+
+.equipa-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.equipa-titulo {
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.equipa-subtitulo {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #444;
+  text-align: center;
+}
+
+.equipa-bloco {
+  margin-bottom: 60px;
+}
+
+.equipa-pessoas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.equipa-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.equipa-foto {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #ccc;
+}
+
+.equipa-nome {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.equipa-cargo {
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.equipa-cargo::before {
+  content: "• "; /* Ponto tipo lista */
+  color: black;  /* Cor do ponto */
+}
+
+.equipa-contato {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.equipa-info {
+  margin-bottom: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .equipa-titulo {
+    font-size: 2rem;
+  }
+
+  .equipa-subtitulo {
+    font-size: 1.4rem;
+  }
+
+  .equipa-card {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .equipa-foto {
+    width: 100px;
+    height: 100px;
+  }
+
+  .equipa-nome {
+    font-size: 1rem;
+  }
+
+  .equipa-cargo {
+    font-size: 0.9rem;
+  }
+}

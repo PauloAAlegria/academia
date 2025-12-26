@@ -1,0 +1,111 @@
+/* seção de downloads */
+.section-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px 20px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  min-height: 90vh;
+}
+
+.background-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='200' viewBox='0 0 1000 200'%3E%3Cstyle%3E.line%7Bstroke:%23999;stroke-width:1%7D%3C/style%3E%3Cg%3E%3Cpath class='line' d='M0 40 Q100 20 200 40 T400 40 T600 40 T800 40 T1000 40'/%3E%3Cpath class='line' d='M0 60 Q100 40 200 60 T400 60 T600 60 T800 60 T1000 60'/%3E%3Cpath class='line' d='M0 80 Q100 60 200 80 T400 80 T600 80 T800 80 T1000 80'/%3E%3Cpath class='line' d='M0 100 Q100 80 200 100 T400 100 T600 100 T800 100 T1000 100'/%3E%3Cpath class='line' d='M0 120 Q100 100 200 120 T400 120 T600 120 T800 120 T1000 120'/%3E%3Ctext x='10' y='110' font-size='100' fill='%23999'%3E%26%23119070%3B%3C/text%3E%3C/g%3E%3C/svg%3E");
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.section-title {
+  flex: 1 1 250px;
+  font-size: clamp(1.2rem, 4vw, 2rem);;
+  padding: 20px;
+  text-align: right;
+  color: #444;
+}
+
+.links-box {
+  flex: 2 1 400px;
+  background-color: #ffffffdd;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+}
+
+.links-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links-box li {
+  margin-bottom: 16px;
+}
+
+.links-box a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+}
+
+.links-box a:hover {
+  color: #fff;
+  background-color: #111827;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .section-title {
+    flex: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    text-align: center !important;
+  }
+
+  .links-box {
+    flex: none;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+/* end seção de downloads */

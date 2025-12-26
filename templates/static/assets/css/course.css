@@ -1,0 +1,80 @@
+.musica-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px 60px; /* 100px no topo compensa a navbar fixa */
+  min-height: 90vh;
+  background: linear-gradient(to right, #1e1e1e, #2b2b2b);
+  color: #ffffff;
+}
+
+.container-course {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.titulo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.subtitulo {
+  font-size: 1.3rem;
+  color: #bbbbbb;
+  margin: 0;
+}
+
+.lista-instrumentos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  column-count: 2;
+  column-gap: 40px;
+  text-align: left;
+  font-size: 1.2rem;
+  color: #cccccc;
+}
+
+.lista-instrumentos li {
+  margin-bottom: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .subtitulo {
+    font-size: 1.1rem;
+  }
+
+  .lista-instrumentos {
+    column-count: 1;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 1.6rem;
+  }
+
+  .subtitulo {
+    font-size: 1rem;
+  }
+
+  .lista-instrumentos {
+    font-size: 1rem;
+  }
+}

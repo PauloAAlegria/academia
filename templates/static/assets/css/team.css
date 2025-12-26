@@ -1,0 +1,221 @@
+/* seção de funcionários*/
+/* Definição do estilo para a seção */
+.team-section {
+  background-color: #323a4e; /* Cor agradável para o fundo */
+  padding: 50px 0;
+  text-align: center;
+  min-height: 90vh;
+}
+
+.team-section h1 {
+  margin-top: 40px;
+  font-size: 40px;
+  color: #fff;
+}
+
+.category-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  color: #fff;
+  border-left: none; /* Removemos o destaque lateral */
+  padding-left: 0;
+  text-align: center; /* Centraliza o texto */
+  position: relative;
+}
+
+.category-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #fff;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;    
+  gap: 100px;
+}
+
+.team-member {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.team-member h3 {
+  font-size: 17px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.team-member p {
+  font-size: 14px;
+  color: #666;
+}
+
+.team-member p::before{
+  content: "• "; /* Ponto tipo lista */
+  color: black;  /* Cor do ponto */
+}
+
+.btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 5px 12px;
+  background-color: #111827;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #475269ff; 
+}
+
+/* paginação dos conteúdos da seção de equipas */
+#team-pagination,
+.internal-pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* permite quebrar linha se for necessário */
+  gap: 8px;
+  margin-top: 40px;
+}
+
+#team-pagination span {
+  display: flex;
+  gap: 8px;
+}
+
+#team-pagination button,
+.internal-pagination button {
+  min-width: 40px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  
+  background: white;
+  color: #000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Botão ativo e hover - aplica para botões da paginação interna e navegação categorias */
+#team-pagination button.active-category,
+.internal-pagination button.active,
+#team-pagination button.active-category:hover,
+.internal-pagination button.active:hover,
+#team-pagination button:hover,
+.internal-pagination button:hover {
+  background-color: #111827;
+  color: white;  
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #team-pagination,
+  .internal-pagination {
+    margin-top: 20px;
+    gap: 6px;
+  }
+
+  #team-pagination button,
+  .internal-pagination button {
+    font-size: 12px;
+    padding: 5px 8px;
+    min-width: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  #team-pagination,
+  .internal-pagination {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+
+  #team-pagination button,
+  .internal-pagination button {
+    flex: 0 0 auto; /* impede que encolham */
+    font-size: 11px;
+    padding: 5px 6px;
+    min-width: 30px;
+  }
+
+  /* Ajusta setas para ganhar espaço */
+  #team-pagination > button:first-child,
+  #team-pagination > button:last-child,
+  .internal-pagination > button:first-child,
+  .internal-pagination > button:last-child {
+    flex: 0 0 auto;
+    padding: 5px 6px;
+  }
+}
+/* fim da paginação dos conteúdos da seção de equipas */
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .team-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .team-section h1 {
+    font-size: 30px;
+  }
+
+  .team-section h2 {
+    font-size: 25px;
+  }
+
+  .team-member p {
+    font-size: 13px;    
+  }
+
+  .btn {  
+    padding: 4px 10px;  
+    font-size: 12px;  
+  }
+
+  .btn:hover {
+    background-color: #111827;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-member img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-section h2 {
+    font-size: 25px;
+  }
+}
+/* end seção de funcionários*/

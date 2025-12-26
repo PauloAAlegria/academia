@@ -1,0 +1,148 @@
+/* seção de eventos */
+.event-section {
+  min-height: 90vh;
+  height: auto !important;
+  display: block !important;
+  padding: 60px 20px;
+  font-size: 1rem;
+  margin-top: 50px; 
+}
+
+.event-section-title {
+  text-align: center;
+  font-size: 2.2em;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.event-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  padding: 0 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 16px 0;
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1 1 45%;
+  max-width: 500px;
+}
+
+.event-image {
+  width: 180px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border: 3px solid #fff; /* moldura branca destacada */
+  background: #fff; /* reforça a moldura se a imagem tiver fundo transparente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-image:hover {
+  transform: scale(1.50);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.event-info {
+  flex: 1;
+  font-size: 1.05em;  /* antes: 0.95em */
+  color: #333;
+}
+
+.event-title {
+  font-size: 1.2em;   /* antes: 1.1em */
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.event-info p {
+  margin: 4px 0;
+}
+
+.event-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #586a84;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.05em;  /* antes: 0.95em */
+}
+
+.event-link:hover {
+  text-decoration: underline;
+}
+
+/* adicionado a paginação */
+.pagination {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.pagination button {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  margin: 0 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination button.active {
+  background-color: #586a84;
+  color: white;
+  border-color: #586a84;
+}
+/* fim da paginação */
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .event-card {
+    flex-direction: column;
+    align-items: center; /* centraliza imagem e info */
+    text-align: center;
+  }
+
+  .event-image {
+    width: 180px;
+    height: 230px;
+  }
+
+  .event-image:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .event-info {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 1em;
+  }
+
+  .event-title {
+    font-size: 1.1em;
+  }
+
+  .event-link {
+    font-size: 1em;
+  }
+}
+/* end seção de eventos */

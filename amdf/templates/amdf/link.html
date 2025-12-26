@@ -1,0 +1,64 @@
+{% extends "base/base_link.html" %}
+{% load static %}
+   
+{% block content %}
+
+
+<!-- seção de downloads -->
+  <section class="section-container" id="link">
+    <div class="background-svg"></div>
+    
+    <!-- Seção Downloads -->
+    <div class="content">
+      <div class="section-title">
+        <h2>Documentos</h2>
+      </div>
+      <div class="links-box">
+        <ul>
+          {% for download in downloads %}
+            <li>
+              <a href="{{ download.link }}" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px;">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v3.1a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-3.1a.5.5 0 0 1 1 0v3.1a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-3.1a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 1 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                {{ download.name }}
+              </a>
+            </li>
+          {% empty %}
+            <li style="color: #888b94ff;">Nenhum ficheiro disponível para download.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Seção Critérios de Avaliação -->
+    <div class="content">
+      <div class="section-title">
+        <h2>Critérios de Avaliação</h2>
+      </div>
+      <div class="links-box">
+        <ul>
+          {% for link in links %}
+            <li>
+              <a href="{{ link.link }}" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 6px;">
+                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v3.1a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-3.1a.5.5 0 0 1 1 0v3.1a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-3.1a.5.5 0 0 1 .5-.5z"/>
+                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 1 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                {{ link.name }}
+              </a>
+            </li>
+          {% empty %}
+            <li style="color: #888b94ff;">Nenhum ficheiro disponível para download.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- end seção de downloads -->
+
+
+
+{% endblock content %}

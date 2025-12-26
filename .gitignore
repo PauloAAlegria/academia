@@ -1,0 +1,41 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+
+# Django
+*.log
+*.pot
+*.py[cod]
+*.swp
+*~ 
+
+# Ambiente Virtual
+venv/
+.env
+
+# Arquivos de Configuração Locais
+local_settings.py
+settings_local.py
+
+# Arquivos da Base de Dados (se estiver usando SQLite localmente)
+db.sqlite3
+
+# Arquivos do Editor de Texto
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de Cache
+*.cache
+
+# Arquivos temporários
+*.bak
+*.swp
+
+# Static files
+staticfiles/

@@ -1,0 +1,224 @@
+/* Reset básico e configuração inicial */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
+}
+
+.logo img {
+  height: 32px;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  color: white;
+  padding: 1rem 0;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+/* Mudança de cor da navbar quando rolar */
+.navbar.scrolled {
+  background: #111827;
+  color: white;  
+}
+
+/* Container para centralizar o conteúdo */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Menu desktop */
+.menu {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.menu a,
+.dropdown-toggle {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estilos para os links de navegação */
+.menu a:hover {
+  color: gray;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Faz com que o dropdown apareça logo abaixo do link */
+  left: 0;
+  background: #1f2937;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  min-width: 160px;
+  z-index: 10;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: white;
+}
+
+.dropdown-menu a:hover {
+  background: #374151;
+}
+
+/* Exibe o menu dropdown quando o link "Serviços" é hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Hamburger (ícone do menu para mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 24px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Barras do hamburger */
+.bar {
+  width: 100%;
+  height: 3px;
+  background: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Quando o menu está aberto, transformar as barras do hamburger em "X" */
+.hamburger.open .bar1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open .bar2 {
+  opacity: 0;
+}
+
+.hamburger.open .bar3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mudança de cor do ícone hamburger no estado de rolagem */
+.navbar.scrolled .hamburger .bar {
+  background-color: #ffffff; /* Cor das barras do hamburger quando rolar a página */
+}
+
+/* Menu mobile */
+.mobile-menu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  background: #1f2937;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Links do menu mobile */
+.mobile-menu a {
+  padding: 0.75rem 0;
+  text-decoration: none;
+  color: white;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  background: #374151;
+  color: white;
+}
+
+/* Dropdown no menu mobile */
+.mobile-dropdown-toggle {
+  cursor: pointer;
+  margin-top: 1rem;
+  color: white;
+}
+
+.mobile-dropdown-menu {
+  display: none;
+  padding-left: 1rem;
+}
+
+/* Ajuste de cor do dropdown no mobile para consistência com o menu */
+.mobile-dropdown-menu a {
+  display: block;
+  padding: 0.5rem 0;
+  text-decoration: none;
+  color: white; /* Certifica-se de que o texto do dropdown tenha a mesma cor do menu */
+}
+
+.mobile-dropdown-menu a:hover {
+  background: #374151;
+  color: white;
+}
+
+/* Estilo das seções */
+.section {
+  min-height: 90vh; /* altura minima para a seção */
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.light {
+  background: #e5e7eb;
+}
+
+.dark {
+  background: #4b5563;
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .menu {
+    display: none; /* Esconde o menu para telas pequenas */
+  }
+
+  .hamburger {
+    display: flex; /* Exibe o botão de hamburger */
+  }
+}
+/* end navbar / menu */

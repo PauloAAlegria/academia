@@ -1,0 +1,99 @@
+{% extends "base/base_portfolio.html" %}
+{% load static %}    
+
+{% block content %}
+
+  <section class="portfolio-section">
+    <div class="portfolio-container">
+      <div class="intro">
+        <!-- Nome e Cargo -->
+        <h2>{{ persons.name }}</h2>
+        <p class="subtitle">
+          {% for position in persons.positions.all %}
+            {{ position.title }}{% if not forloop.last %} & {% endif %}
+          {% endfor %}
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- Sobre -->
+        {% if persons.about %}
+          <div class="portfolio-card">
+            <h3>Biografia</h3>
+            <p>{{ persons.about | safe }}</p>
+          </div>
+        {% endif %}
+
+        <!-- Formação Académica -->
+        {% if qualifications %}
+          <div class="portfolio-card">
+            <h3>Formação Académica</h3>
+            <ul>
+              {% for qualification in qualifications %}
+                <li>{{ qualification.qualification }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <!-- Experiência -->
+        {% if experiences %}
+          <div class="portfolio-card">
+            <h3>Experiência</h3>
+            <ul>
+              {% for experience in experiences %}
+                <li>{{ experience.experience }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <!-- Áreas de Ensino -->
+        {% if fields %}
+          <div class="portfolio-card">
+            <h3>Áreas de Ensino</h3>
+            <ul>
+              {% for field in fields %}
+                <li>{{ field.field }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <!-- Destaques Profissionais -->
+        {% if relevances %}
+          <div class="portfolio-card">
+            <h3>Prémios</h3>
+            <ul>
+              {% for relevance in relevances %}
+                <li>{{ relevance.relevance }}</li>
+              {% endfor %}
+            </ul>
+          </div>  
+        {% endif %}    
+
+        <!-- Contato (email e redes sociais) -->
+        {% if socials or persons.email %}
+          <div class="portfolio-card">
+            <h3>Contato</h3>
+            <p>
+              {% if persons.email %}
+                📧 <a href="mailto:{{ persons.email }}">{{ persons.email }}</a><br>
+              {% endif %}
+              
+              {% for social in socials %}
+                {% if social.name %}
+                  🌐 <a href="{{ social.social }}" target="_blank">{{ social.name }}</a><br>
+                {% else %}
+                  🌐 <a href="{{ social.social }}" target="_blank">Link para Rede Social</a><br>
+                {% endif %}
+              {% endfor %}
+            </p>
+          </div>
+        {% endif %}
+      </div>
+      
+    </div>
+  </section>
+
+{% endblock content %}

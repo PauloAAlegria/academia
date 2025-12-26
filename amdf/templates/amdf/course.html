@@ -1,0 +1,22 @@
+{% extends "base/base_course.html" %}
+{% load static %}
+   
+{% block content %}
+    
+<!-- seção detalhada de cada curso -->
+<section class="musica-section">
+  <div class="container-course">
+    <div class="cabecalho">
+      <h2 class="titulo">{{ course.course_name_2 }}</h2>
+      <h3 class="subtitulo">{{ course.portaria }}</h3>
+    </div>
+
+    <ul class="lista-instrumentos">
+      <li>{{ course.instruments | safe }}</li>
+      
+    </ul>
+  </div>
+</section>
+<!-- end seção detalhada dos cursos -->
+
+{% endblock content %}

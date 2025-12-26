@@ -1,0 +1,48 @@
+{% extends "base/base_event.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- seção de eventos -->
+<section id="event" class="section light event-section">
+  <!--título da seção-->
+  <h2 class="event-section-title">Plano de Atividades</h2>
+
+  <div class="event-container">
+  <!--para mostrar todos os eventos que existam-->
+  {% for event in posters %}
+    <div class="event-card">
+      <!--imagem do evento-->
+      <img src="{{ event.image.url }}" alt="Imagem do Evento {{ event.id }}" class="event-image">
+      <div class="event-info">
+        <!--detalhes dos eventos-->
+        {% for detail in event.eventos.all %}
+          <h3 class="event-title">{{ detail.name }}</h3>
+          <p><strong>Local:</strong> {{ detail.local }}</p>
+          <p><strong>Data:</strong> {{ detail.date|date:"d/m/Y H:i" }}</p>
+          <!--se existir um link para download-->
+          {% if detail.link %}
+            <a href="{{ detail.link }}" class="event-link" target="_blank">📄 Programa</a>
+          {% endif %}
+          <!--para separar os detalhes de cada evento-->
+          {% if not forloop.last %}
+            <hr class="event-separator">
+          {% endif %}
+          <!--se não houver detalhes do evento mostra esta mensagem-->
+        {% empty %}
+          <p><em>Sem detalhes disponíveis.</em></p>
+        {% endfor %}
+      </div>
+    </div>
+    <!--se não houver eventos mostra esta mensagem-->
+  {% empty %}
+    <h2 class="event-section-title" style="color: #888b94ff;">Nenhuma Atividade Disponível.</h2>
+  {% endfor %}
+</div>
+
+<div id="pagination" class="pagination"></div>
+
+</section>
+<!-- end seção dos eventos -->
+
+{% endblock content %}

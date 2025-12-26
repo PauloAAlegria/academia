@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- seção imagem de fundo -->
+    <!-- Imagem de fundo definida como <img> no HTML -->
+    <section class="hero" id="hero">        
+        {% if cover and cover.cover_image %}
+          <img src="{{ cover.cover_image.url }}" alt="Imagem de fundo" class="hero-img">
+        {% else %}
+          <img src="{% static 'assets/img/site_img/academia.jpg' %}" alt="Imagem padrão" class="hero-img">
+        {% endif %}
+
+        <div class="hero-content">
+            <h1>{{ cover.academia_name }}</h1>
+            <p>{{ cover.short_text }}</p>
+        </div>
+    </section>
+  <!-- fim seção imagem de fundo -->
+
+
+
+  <!-- Seção do sobre -->
+  <section id="about" class="section">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>{{ about.title_1 }}</h2>
+        <p>
+          {{ about.short_description | safe }}
+        </p>
+        {% if about.short_description %}
+          <a href="{% url 'home:about' %}" class="btn">Saiba Mais</a>
+        {% else %}
+        <h2 style="color: #888b94ff;">Em Manutenção</h2>
+        {% endif %}       
+      </div>
+      <div class="about-image">
+        {% if about.image_1 %}
+        <img src="{{ about.image_1.url }}" alt="Academia de Música">
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- fim seção do sobre -->
+
+
+
+  <!-- seção dos cursos -->
+  <section id="cursos" class="courses-section">
+    <div class="courses-container">
+      <h2>Oferta Educativa</h2> <!--título da seção-->
+      <div class="courses-grid">
+        {% for course in courses %}
+
+        <div class="course-card">
+          <h3>{{ course.course_name }}</h3> <!--nome do curso-->
+          <p>{{ course.short_description }}</p> <!--frase alusiva sobre os cursos-->
+          <a href="{% url 'home:course_detail' course.slug %}" class="btn">Saber Mais</a> <!--caminho para a página dos cursos-->
+        </div>
+
+        {% empty %}
+        <p><h2 style="color: #888b94ff;">Em Manutenção</h2></p> <!--caso não exista cursos apresenta esta mensagem-->
+
+        {% endfor %}        
+      </div>
+    </div>
+  </section>
+  <!-- fim seção dos cursos -->    
+
+{% endblock content %}

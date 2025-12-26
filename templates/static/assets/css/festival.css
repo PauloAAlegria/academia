@@ -1,0 +1,92 @@
+/* secção do festival */
+.festival-section {
+  margin-top: 50px;  
+  padding: 40px 20px;  /* Mais padding para dar um pouco de espaço */
+  background-color: #f0f8ff; /* Cor de fundo suave (exemplo: azul claro) */
+  border-radius: 8px; /* Bordas arredondadas para um toque mais suave */
+  min-height: 90vh;
+}
+  
+.section-header h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;    
+}
+  
+/* Imagem */
+.image-container {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Detalhes do Festival */
+.festival-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.festival-description {
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.festival-info {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.festival-info h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.festival-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.festival-info li {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .festival-details {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .festival-description {
+    max-width: 50%;
+  }
+
+  .festival-info {
+    max-width: 40%;
+  }  
+}
+
+@media (max-width: 767px) {
+  .festival-info h3 {
+    font-size: 1.3em;
+  }
+
+  .festival-info li {
+    font-size: 1em;
+  }
+
+  .section-header h2 {    
+    font-size: 1.5em;      
+  }
+}
+/* end secção do festival */
