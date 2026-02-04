@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.utils.text import slugify
+from common.utils import process_image_field
 
 
 class Groups(models.Model):
@@ -55,7 +56,11 @@ class Persons(models.Model):
                 slug = f"{base_slug}-{counter}"
                 counter += 1
             self.slug = slug
+
+        # Redimensiona/comprime a imagem, se existir
+        process_image_field(self.image)
         super().save(*args, **kwargs)
+        
 
     def get_positions_display(self):
         return ", ".join([str(pos) for pos in self.positions.all()])

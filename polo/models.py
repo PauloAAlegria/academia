@@ -1,5 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField
+from common.utils import process_image_field
 
 
 class Group(models.Model):
@@ -45,7 +46,14 @@ class Person(models.Model):
         verbose_name_plural = 'Corpo Docente e Não Docente'
 
     def __str__(self):
-        return self.name
+        return self.name    
+
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        # Processa a imagem antes de salvar
+        process_image_field(self.image)
+
+        super().save(*args, **kwargs)    
     
 
 class ContactPenamacor(models.Model):

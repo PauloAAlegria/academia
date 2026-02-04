@@ -1,4 +1,5 @@
 from django.db import models
+from common.utils import process_image_field
 
 # model para os eventos, passamos só a imagem
 class Event(models.Model):
@@ -10,6 +11,11 @@ class Event(models.Model):
 
     def __str__(self):
         return f"Evento #{self.id}"
+    
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        process_image_field(self.image)
+        super().save(*args, **kwargs)   
     
 
 # model para os detalhes dos eventos

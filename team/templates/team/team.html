@@ -35,7 +35,7 @@
       {% for pessoa in grupos_pessoas.professores %}
         <div class="team-member">
           {% if pessoa.image %}
-            <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
+            <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">          
           {% endif %}
           <h3>{{ pessoa.name }}</h3>
           <p>{{ pessoa.get_positions_display }}</p>

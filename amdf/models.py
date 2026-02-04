@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from tinymce.models import HTMLField # para editar os campos textfield e substituir por htmlfield
 from django.core.exceptions import ValidationError
+from common.utils import process_image_field
 
 
 # model para mudar o logo em todas as navbar
@@ -29,7 +30,13 @@ class CoverPage(models.Model):
         verbose_name_plural = 'Página Inicial'
 
     def __str__(self):
+
         return self.academia_name or ""
+    
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        process_image_field(self.cover_image)
+        super().save(*args, **kwargs)    
 
 
 # model para mudar o sobre a academia
@@ -49,6 +56,12 @@ class About(models.Model):
 
     def __str__(self):
             return self.title_1
+    
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        for field_name in ['image_1', 'image_2', 'image_3']:
+            process_image_field(getattr(self, field_name))
+        super().save(*args, **kwargs)    
 
 
 # model dos cursos  
@@ -135,6 +148,11 @@ class Midia(models.Model):
             raise ValidationError("Apenas um dos campos (imagem ou vídeo) deve ser preenchido.")
         if not self.image and not self.video:
             raise ValidationError("Um dos campos (imagem ou vídeo) deve ser preenchido.")
+
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        process_image_field(self.image)
+        super().save(*args, **kwargs)    
 
 
 # model para os downloads

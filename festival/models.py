@@ -1,6 +1,6 @@
 from django.db import models
 from tinymce.models import HTMLField # para editar os campos textfield e substituir por htmlfield
-
+from common.utils import process_image_field
 
 # model do festival
 class Festival(models.Model):
@@ -18,3 +18,11 @@ class Festival(models.Model):
 
     def __str__(self):
         return self.address
+    
+
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        process_image_field(self.img)
+        super().save(*args, **kwargs)
+
+    
