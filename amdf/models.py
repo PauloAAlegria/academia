@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from tinymce.models import HTMLField # para editar os campos textfield e substituir por htmlfield
 from django.core.exceptions import ValidationError
+from common.utils import process_image_field
 
 
 # model para mudar o logo em todas as navbar
@@ -20,8 +21,8 @@ class LogoNavbar(models.Model):
 # model para mudar imagem e texto da página principal
 class CoverPage(models.Model):
     cover_image = models.ImageField(upload_to='cover/%Y/%m', blank=True, null=True, verbose_name='Imagem do Site')
-    academia_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Nome da Academia')
-    short_text = models.CharField(max_length=100, blank=True, null=True, verbose_name='Frase Alusiva')
+    academia_name = models.CharField(max_length=100, blank=True, default="", verbose_name='Nome da Academia')
+    short_text = models.CharField(max_length=100, blank=True, default="", verbose_name='Frase Alusiva')
 
     # para aparecer o nome da classe no admin com o nome correto
     class Meta:
@@ -30,6 +31,11 @@ class CoverPage(models.Model):
 
     def __str__(self):
         return self.academia_name
+    
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        process_image_field(self.cover_image)
+        super().save(*args, **kwargs)    
 
 
 # model para mudar o sobre a academia
@@ -37,7 +43,7 @@ class About(models.Model):
     title_1 = models.CharField(max_length=100, verbose_name='Título Página Principal')
     short_description = HTMLField(verbose_name='Descrição curta sobre a Academia')
     image_1 = models.ImageField(upload_to='about/%Y/%m', blank=True, null=True, verbose_name='Primeira Imagem')
-    title_2 = models.CharField(max_length=100, blank=True, verbose_name='Título Página do Sobre')
+    title_2 = models.CharField(max_length=100, blank=True, default="", verbose_name='Título Página do Sobre')
     long_description = HTMLField(verbose_name='Descrição longa sobre a Academia')
     image_2 = models.ImageField(upload_to='about/%Y/%m', blank=True, null=True, verbose_name='Segunda Imagem')
     image_3 = models.ImageField(upload_to='about/%Y/%m', blank=True, null=True, verbose_name='Terceira Imagem')
@@ -49,14 +55,20 @@ class About(models.Model):
 
     def __str__(self):
             return self.title_1
+    
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        for field_name in ['image_1', 'image_2', 'image_3']:
+            process_image_field(getattr(self, field_name))
+        super().save(*args, **kwargs)    
 
 
 # model dos cursos  
 class Course(models.Model):    
     course_name = models.CharField(max_length=100, verbose_name='Nome do Curso')
-    short_description = models.CharField(max_length=100, blank=True, null=True, verbose_name='Texto Alusivo aos Cursos')
+    short_description = models.CharField(max_length=100, blank=True, default="", verbose_name='Texto Alusivo aos Cursos')
     course_name_2 = models.CharField(max_length=100, verbose_name='Título para Detalhes')
-    portaria = models.CharField(max_length=100, blank=True, null=True, verbose_name='Portaria / Decreto-Lei')
+    portaria = models.CharField(max_length=100, blank=True, default="", verbose_name='Portaria / Decreto-Lei')
     instruments = HTMLField(verbose_name='Composição do Curso')
 
     # o slug é uma identificação única de cada curso, como uma chave primária
@@ -91,9 +103,9 @@ class Footer(models.Model):
     link_facebook = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do Facebook')
     link_instagram = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do Instagram')
     address = HTMLField(blank=True, null=True, verbose_name='Morada')
-    contact = models.CharField(max_length=100, blank=True, null=True, help_text="Exemplo: '+351 000 000 000'", verbose_name='Telemóvel/Telefone')
-    email = models.CharField(max_length=100, blank=True, null=True, verbose_name='Email')
-    time = models.CharField(max_length=100, blank=True, null=True, help_text="Exemplo: 'Seg a Sex - 08h00 às 21h00'", verbose_name='Horário de Funcionamento')
+    contact = models.CharField(max_length=100, blank=True, default="", help_text="Exemplo: '+351 000 000 000'", verbose_name='Telemóvel/Telefone')
+    email = models.CharField(max_length=100, blank=True, default="", verbose_name='Email')
+    time = models.CharField(max_length=100, blank=True, default="", help_text="Exemplo: 'Seg a Sex - 08h00 às 21h00'", verbose_name='Horário de Funcionamento')
 
     # para aparecer o nome da classe no admin com o nome correto
     class Meta:
@@ -117,7 +129,7 @@ class Gallery(models.Model):
 
 class Midia(models.Model):
     gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='midias')
-    title = models.CharField(max_length=100, blank=True, null=True, verbose_name='Nome da Imagem ou Vídeo')
+    title = models.CharField(max_length=100, blank=True, default="", verbose_name='Nome da Imagem ou Vídeo')
     image = models.ImageField(upload_to='galeria/imagem/%Y/%m', blank=True, null=True, verbose_name='Imagem')
     video = models.FileField(upload_to='galeria/videos/%Y/%m', blank=True, null=True, verbose_name='Vídeo')
 
@@ -135,6 +147,11 @@ class Midia(models.Model):
             raise ValidationError("Apenas um dos campos (imagem ou vídeo) deve ser preenchido.")
         if not self.image and not self.video:
             raise ValidationError("Um dos campos (imagem ou vídeo) deve ser preenchido.")
+
+    #alteração redimensionar imagem    
+    def save(self, *args, **kwargs):
+        process_image_field(self.image)
+        super().save(*args, **kwargs)    
 
 
 # model para os downloads

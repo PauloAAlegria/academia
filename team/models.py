@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 from django.utils.text import slugify
+from common.utils import process_image_field
 
 
 class Groups(models.Model):
@@ -39,8 +40,8 @@ class Persons(models.Model):
     positions = models.ManyToManyField(Positions, verbose_name='Cargo/Profissão', related_name='peoples')
     groups = models.ManyToManyField(Groups, verbose_name='Grupo a que pertence', related_name='people')
     slug = models.SlugField(unique=True, blank=True, max_length=120)
-    about = HTMLField(blank=True, null=True, verbose_name='Excerto/Bibliografia')
-    email = models.EmailField(max_length=200, blank=True, null=True, verbose_name='Email')
+    about = HTMLField(blank=True, default="", verbose_name='Excerto/Bibliografia')
+    email = models.EmailField(max_length=200, blank=True, default="", verbose_name='Email')
 
     class Meta:
         verbose_name = 'Corpo Docente e Não Docente'
@@ -55,7 +56,11 @@ class Persons(models.Model):
                 slug = f"{base_slug}-{counter}"
                 counter += 1
             self.slug = slug
+
+        # Redimensiona/comprime a imagem, se existir
+        process_image_field(self.image)
         super().save(*args, **kwargs)
+        
 
     def get_positions_display(self):
         return ", ".join([str(pos) for pos in self.positions.all()])
@@ -78,7 +83,7 @@ class Persons(models.Model):
 
 class Qualification(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='qualifications')
-    qualification = models.CharField(max_length=100, blank=True, null=True, verbose_name='Formação Académica')
+    qualification = models.CharField(max_length=100, blank=True, default="", verbose_name='Formação Académica')
 
     class Meta:
         verbose_name = 'Formação Académica'
@@ -90,7 +95,7 @@ class Qualification(models.Model):
     
 class Experience(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='experiences')
-    experience = models.CharField(max_length=200, blank=True, null=True, verbose_name='Experiência Profissional')
+    experience = models.CharField(max_length=200, blank=True, default="", verbose_name='Experiência Profissional')
 
     class Meta:
         verbose_name = 'Experiência Profissional'
@@ -102,7 +107,7 @@ class Experience(models.Model):
     
 class Field(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='fields')
-    field = models.CharField(max_length=200, blank=True, null=True, verbose_name='Área de Ensino')
+    field = models.CharField(max_length=200, blank=True, default="", verbose_name='Área de Ensino')
 
     class Meta:
         verbose_name = 'Área de Ensino'
@@ -114,7 +119,7 @@ class Field(models.Model):
     
 class Relevance(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='relevances')
-    relevance = models.CharField(max_length=200, blank=True, null=True, verbose_name='Destaques Profissionais')
+    relevance = models.CharField(max_length=200, blank=True, default="", verbose_name='Destaques Profissionais')
 
     class Meta:
         verbose_name = 'Destaque Profissional'
@@ -127,7 +132,7 @@ class Relevance(models.Model):
 class Social(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='socials')
     social = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link Rede Social')
-    name = models.CharField(max_length=50, blank=True, null=True, verbose_name='Nome da Rede Social')
+    name = models.CharField(max_length=50, blank=True, default="", verbose_name='Nome da Rede Social')
 
     class Meta:
         verbose_name = 'Rede Social'
