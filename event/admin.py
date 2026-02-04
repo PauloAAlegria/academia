@@ -16,6 +16,5 @@ class EventAdmin(admin.ModelAdmin):
     get_event_name.short_description = 'Nome do Evento'
 
     def get_event_date(self, obj):
-        detalhe = obj.eventos.first()
-        return detalhe.date if detalhe else '-'
-    get_event_date.short_description = 'Data e Hora'
+            detalhe = obj.eventos.first()
+            return detalhe.date if detalhe and detalhe.date else '-'

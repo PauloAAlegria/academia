@@ -20,8 +20,8 @@ class LogoNavbar(models.Model):
 # model para mudar imagem e texto da página principal
 class CoverPage(models.Model):
     cover_image = models.ImageField(upload_to='cover/%Y/%m', blank=True, null=True, verbose_name='Imagem do Site')
-    academia_name = models.CharField(max_length=100, blank=True, null=True, verbose_name='Nome da Academia')
-    short_text = models.CharField(max_length=100, blank=True, null=True, verbose_name='Frase Alusiva')
+    academia_name = models.CharField(max_length=100, blank=True, default="", verbose_name='Nome da Academia')
+    short_text = models.CharField(max_length=100, blank=True, default="", verbose_name='Frase Alusiva')
 
     # para aparecer o nome da classe no admin com o nome correto
     class Meta:
@@ -29,7 +29,7 @@ class CoverPage(models.Model):
         verbose_name_plural = 'Página Inicial'
 
     def __str__(self):
-        return self.academia_name
+        return self.academia_name or ""
 
 
 # model para mudar o sobre a academia
@@ -37,7 +37,7 @@ class About(models.Model):
     title_1 = models.CharField(max_length=100, verbose_name='Título Página Principal')
     short_description = HTMLField(verbose_name='Descrição curta sobre a Academia')
     image_1 = models.ImageField(upload_to='about/%Y/%m', blank=True, null=True, verbose_name='Primeira Imagem')
-    title_2 = models.CharField(max_length=100, blank=True, verbose_name='Título Página do Sobre')
+    title_2 = models.CharField(max_length=100, blank=True, default="", verbose_name='Título Página do Sobre')
     long_description = HTMLField(verbose_name='Descrição longa sobre a Academia')
     image_2 = models.ImageField(upload_to='about/%Y/%m', blank=True, null=True, verbose_name='Segunda Imagem')
     image_3 = models.ImageField(upload_to='about/%Y/%m', blank=True, null=True, verbose_name='Terceira Imagem')
@@ -54,9 +54,9 @@ class About(models.Model):
 # model dos cursos  
 class Course(models.Model):    
     course_name = models.CharField(max_length=100, verbose_name='Nome do Curso')
-    short_description = models.CharField(max_length=100, blank=True, null=True, verbose_name='Texto Alusivo aos Cursos')
+    short_description = models.CharField(max_length=100, blank=True, default="", verbose_name='Texto Alusivo aos Cursos')
     course_name_2 = models.CharField(max_length=100, verbose_name='Título para Detalhes')
-    portaria = models.CharField(max_length=100, blank=True, null=True, verbose_name='Portaria / Decreto-Lei')
+    portaria = models.CharField(max_length=100, blank=True, default="", verbose_name='Portaria / Decreto-Lei')
     instruments = HTMLField(verbose_name='Composição do Curso')
 
     # o slug é uma identificação única de cada curso, como uma chave primária
@@ -90,10 +90,10 @@ class Footer(models.Model):
     logo_ed = models.ImageField(upload_to='logos_rodapé/%Y/%m', blank=True, null=True, verbose_name='Logo Educação')
     link_facebook = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do Facebook')
     link_instagram = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do Instagram')
-    address = HTMLField(blank=True, null=True, verbose_name='Morada')
-    contact = models.CharField(max_length=100, blank=True, null=True, help_text="Exemplo: '+351 000 000 000'", verbose_name='Telemóvel/Telefone')
-    email = models.CharField(max_length=100, blank=True, null=True, verbose_name='Email')
-    time = models.CharField(max_length=100, blank=True, null=True, help_text="Exemplo: 'Seg a Sex - 08h00 às 21h00'", verbose_name='Horário de Funcionamento')
+    address = HTMLField(blank=True, default="", verbose_name='Morada')
+    contact = models.CharField(max_length=100, blank=True, default="", help_text="Exemplo: '+351 000 000 000'", verbose_name='Telemóvel/Telefone')
+    email = models.CharField(max_length=100, blank=True, default="", verbose_name='Email')
+    time = models.CharField(max_length=100, blank=True, default="", help_text="Exemplo: 'Seg a Sex - 08h00 às 21h00'", verbose_name='Horário de Funcionamento')
 
     # para aparecer o nome da classe no admin com o nome correto
     class Meta:
@@ -101,7 +101,7 @@ class Footer(models.Model):
         verbose_name_plural = 'Rodapé'
 
     def __str__(self):
-        return self.address
+        return self.address or ""
 
 
 # model para a galeria
@@ -117,7 +117,7 @@ class Gallery(models.Model):
 
 class Midia(models.Model):
     gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='midias')
-    title = models.CharField(max_length=100, blank=True, null=True, verbose_name='Nome da Imagem ou Vídeo')
+    title = models.CharField(max_length=100, blank=True, default="", verbose_name='Nome da Imagem ou Vídeo')
     image = models.ImageField(upload_to='galeria/imagem/%Y/%m', blank=True, null=True, verbose_name='Imagem')
     video = models.FileField(upload_to='galeria/videos/%Y/%m', blank=True, null=True, verbose_name='Vídeo')
 

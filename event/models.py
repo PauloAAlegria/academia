@@ -15,9 +15,9 @@ class Event(models.Model):
 # model para os detalhes dos eventos
 class EventDetails(models.Model):
     poster = models.ForeignKey(Event, related_name='eventos', on_delete=models.CASCADE) 
-    name = models.CharField(max_length=200, null=True, blank=True, verbose_name='Nome do Evento')   
-    local = models.CharField(max_length=200, null=True, blank=True, verbose_name='Local de Realização')
-    date = models.DateTimeField(null=True, blank=True, verbose_name='Data e Hora')
+    name = models.CharField(max_length=200, blank=True, default="", verbose_name='Nome do Evento')   
+    local = models.CharField(max_length=200, blank=True, default="", verbose_name='Local de Realização')
+    date = models.CharField(max_length=100, blank=True, default="", verbose_name='Data e Hora', help_text='Ex: 00/00/0000 às 00h00')
     link = models.URLField(null=True, blank=True, verbose_name='Link')
 
     def __str__(self):

@@ -39,8 +39,8 @@ class Persons(models.Model):
     positions = models.ManyToManyField(Positions, verbose_name='Cargo/Profissão', related_name='peoples')
     groups = models.ManyToManyField(Groups, verbose_name='Grupo a que pertence', related_name='people')
     slug = models.SlugField(unique=True, blank=True, max_length=120)
-    about = HTMLField(blank=True, null=True, verbose_name='Excerto/Bibliografia')
-    email = models.EmailField(max_length=200, blank=True, null=True, verbose_name='Email')
+    about = HTMLField(blank=True, default="", verbose_name='Excerto/Bibliografia')
+    email = models.EmailField(max_length=200, blank=True, default="", verbose_name='Email')
 
     class Meta:
         verbose_name = 'Corpo Docente e Não Docente'
@@ -78,60 +78,60 @@ class Persons(models.Model):
 
 class Qualification(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='qualifications')
-    qualification = models.CharField(max_length=100, blank=True, null=True, verbose_name='Formação Académica')
+    qualification = models.CharField(max_length=100, blank=True, default="", verbose_name='Formação Académica')
 
     class Meta:
         verbose_name = 'Formação Académica'
         verbose_name_plural = 'Formação Académica'
 
     def __str__(self):
-        return self.qualification
+        return self.qualification or ""
     
     
 class Experience(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='experiences')
-    experience = models.CharField(max_length=200, blank=True, null=True, verbose_name='Experiência Profissional')
+    experience = models.CharField(max_length=200, blank=True, default="", verbose_name='Experiência Profissional')
 
     class Meta:
         verbose_name = 'Experiência Profissional'
         verbose_name_plural = 'Experiência Profissional'
 
     def __str__(self):
-        return self.experience
+        return self.experience or ""
     
     
 class Field(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='fields')
-    field = models.CharField(max_length=200, blank=True, null=True, verbose_name='Área de Ensino')
+    field = models.CharField(max_length=200, blank=True, default="", verbose_name='Área de Ensino')
 
     class Meta:
         verbose_name = 'Área de Ensino'
         verbose_name_plural = 'Áreas de Ensino'
 
     def __str__(self):
-        return self.field
+        return self.field or ""
     
     
 class Relevance(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='relevances')
-    relevance = models.CharField(max_length=200, blank=True, null=True, verbose_name='Destaques Profissionais')
+    relevance = models.CharField(max_length=200, blank=True, default="", verbose_name='Destaques Profissionais')
 
     class Meta:
         verbose_name = 'Destaque Profissional'
         verbose_name_plural = 'Destaques Profissionais'
 
     def __str__(self):
-        return self.relevance
+        return self.relevance or ""
     
     
 class Social(models.Model):
     person = models.ForeignKey(Persons, on_delete=models.CASCADE, related_name='socials')
     social = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link Rede Social')
-    name = models.CharField(max_length=50, blank=True, null=True, verbose_name='Nome da Rede Social')
+    name = models.CharField(max_length=50, blank=True, default="", verbose_name='Nome da Rede Social')
 
     class Meta:
         verbose_name = 'Rede Social'
         verbose_name_plural = 'Redes Sociais'
 
     def __str__(self):
-        return self.social
+        return self.social or ""

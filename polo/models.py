@@ -51,7 +51,7 @@ class Person(models.Model):
 class ContactPenamacor(models.Model):
     address = HTMLField(verbose_name='Morada')
     contact = models.CharField(max_length=100, verbose_name='Telefone/Telemóvel', help_text="Exemplo: '+351 000 000 000'")
-    email = models.EmailField(max_length=150, verbose_name='Email', blank=True, null=True)
+    email = models.EmailField(max_length=150, verbose_name='Email', blank=True, default="")
     time = models.CharField(max_length=150, verbose_name='Horário de Funcionamento', help_text="Exemplo: 'Seg a Sex - 08h00 às 21h00'")
 
     class Meta:

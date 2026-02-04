@@ -18,8 +18,12 @@
         <!--detalhes dos eventos-->
         {% for detail in event.eventos.all %}
           <h3 class="event-title">{{ detail.name }}</h3>
-          <p><strong>Local:</strong> {{ detail.local }}</p>
-          <p><strong>Data:</strong> {{ detail.date|date:"d/m/Y H:i" }}</p>
+          {% if detail.local %}
+            <p><strong>Local:</strong> {{ detail.local }}</p>
+          {% endif %}
+          {% if detail.date %}
+            <p><strong>Data:</strong> {{ detail.date }}</p>
+          {% endif %}
           <!--se existir um link para download-->
           {% if detail.link %}
             <a href="{{ detail.link }}" class="event-link" target="_blank">📄 Programa</a>

@@ -10,7 +10,7 @@ class Festival(models.Model):
     begin_date = models.DateField(verbose_name='Data de Início')
     end_date = models.DateField(verbose_name='Data de Encerramento')    
     link = models.URLField(max_length=500, verbose_name='Link de Informação', blank=True, null=True)
-    link_name = models.CharField(max_length=100, verbose_name='Nome do Link', blank=True, null=True)
+    link_name = models.CharField(max_length=100, verbose_name='Nome do Link', blank=True, default="")
 
     class Meta:
         verbose_name = 'Festival'

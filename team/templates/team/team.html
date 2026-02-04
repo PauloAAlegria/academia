@@ -17,8 +17,6 @@
         <div class="team-member">
           {% if pessoa.image %}
             <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
-          {% else %}
-            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
           {% endif %}
           <h3>{{ pessoa.name }}</h3>
           <p>{{ pessoa.get_positions_display }}</p>
@@ -38,8 +36,6 @@
         <div class="team-member">
           {% if pessoa.image %}
             <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
-          {% else %}
-            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
           {% endif %}
           <h3>{{ pessoa.name }}</h3>
           <p>{{ pessoa.get_positions_display }}</p>
@@ -61,8 +57,6 @@
         <div class="team-member">
           {% if pessoa.image %}
             <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
-          {% else %}
-            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
           {% endif %}
           <h3>{{ pessoa.name }}</h3>
           <p>{{ pessoa.get_positions_display }}</p>
@@ -82,8 +76,6 @@
         <div class="team-member">
           {% if pessoa.image %}
             <img src="{{ pessoa.image.url }}" alt="{{ pessoa.name }}">
-          {% else %}
-            <img src="{% static 'assets/img/team/team.jpg' %}" alt="{{ pessoa.name }}">
           {% endif %}
           <h3>{{ pessoa.name }}</h3>
           <p>{{ pessoa.get_positions_display }}</p>
