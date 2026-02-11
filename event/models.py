@@ -8,6 +8,7 @@ class Event(models.Model):
     class Meta:
         verbose_name = 'Eventos'
         verbose_name_plural = 'Eventos'
+        ordering = ['-id']   # novos eventos primeiro
 
     def __str__(self):
         return f"Evento #{self.id}"

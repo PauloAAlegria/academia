@@ -11,7 +11,7 @@
   <div class="event-container">
   <!--para mostrar todos os eventos que existam-->
   {% for event in posters %}
-    <div class="event-card">
+    <div class="event-card" data-id="{{ event.id }}">
       <!--imagem do evento-->
       <img src="{{ event.image.url }}" alt="Imagem do Evento {{ event.id }}" class="event-image">
       <div class="event-info">
