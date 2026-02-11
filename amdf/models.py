@@ -127,6 +127,7 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = 'Galeria'
         verbose_name_plural = 'Galeria'
+        ordering = ['-id']  # novos primeiros
 
 class Midia(models.Model):
     gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, related_name='midias')
@@ -152,7 +153,10 @@ class Midia(models.Model):
     #alteração redimensionar imagem    
     def save(self, *args, **kwargs):
         process_image_field(self.image)
-        super().save(*args, **kwargs)    
+        super().save(*args, **kwargs)   
+
+    class Meta:
+        ordering = ['-id']  # novas mídias primeiro
 
 
 # model para os downloads

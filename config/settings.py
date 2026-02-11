@@ -208,7 +208,7 @@ LOGGING = {
         'file': {
             'level': 'ERROR',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'logs/erros_criticos.log',
+            'filename': BASE_DIR / 'logs/erros_criticos.log',
             'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 2,  # mantém até 2 arquivos antigos
             'formatter': 'verbose',
