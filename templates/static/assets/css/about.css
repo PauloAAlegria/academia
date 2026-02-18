@@ -47,6 +47,13 @@
 }
 
 /* Responsividade */
+@media (min-width: 769px) {
+  .about-text p {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .about-container {
     flex-direction: column;

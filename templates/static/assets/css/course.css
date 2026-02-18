@@ -34,19 +34,22 @@
   margin: 0;
 }
 
-.lista-instrumentos {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  column-count: 2;
-  column-gap: 40px;
-  text-align: left;
-  font-size: 1.2rem;
-  color: #cccccc;
+.conteudo-instruments table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
 }
 
-.lista-instrumentos li {
-  margin-bottom: 8px;
+.conteudo-instruments th,
+.conteudo-instruments td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.conteudo-instruments th {
+  background-color: #333;
+  color: #fff;
 }
 
 /* Responsividade */
@@ -59,8 +62,9 @@
     font-size: 1.1rem;
   }
 
-  .lista-instrumentos {
-    column-count: 1;
+  .conteudo-instruments table {
+    display: block;
+    overflow-x: auto;
     font-size: 1.1rem;
   }
 }
@@ -74,7 +78,7 @@
     font-size: 1rem;
   }
 
-  .lista-instrumentos {
+  .conteudo-instruments table {    
     font-size: 1rem;
   }
 }

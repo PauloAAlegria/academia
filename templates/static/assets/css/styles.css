@@ -230,6 +230,13 @@
 }
 
 /* Responsividade */
+@media (min-width: 769px) {
+  .about-text p {
+    text-align: justify;
+    hyphens: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .courses-section h2 {
     font-size: 1.5rem;

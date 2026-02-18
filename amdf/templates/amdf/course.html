@@ -11,10 +11,9 @@
       <h3 class="subtitulo">{{ course.portaria }}</h3>
     </div>
 
-    <ul class="lista-instrumentos">
-      <li>{{ course.instruments | safe }}</li>
-      
-    </ul>
+    <div class="conteudo-instruments">
+      {{ course.instruments | safe }}
+    </div>
   </div>
 </section>
 <!-- end seção detalhada dos cursos -->

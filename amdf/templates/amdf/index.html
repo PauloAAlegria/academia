@@ -26,9 +26,9 @@
     <div class="about-container">
       <div class="about-text">
         <h2>{{ about.title_1 }}</h2>
-        <p>
+        
           {{ about.short_description | safe }}
-        </p>
+        
         {% if about.short_description %}
           <a href="{% url 'home:about' %}" class="btn">Saiba Mais</a>
         {% else %}
