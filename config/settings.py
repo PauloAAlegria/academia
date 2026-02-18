@@ -194,7 +194,7 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # sessões criadas para que alguém que esteja logado inativamente mais de 10 minutos, o site encerre a sessão automaticamente
 # e também encerra se fecharem o browser
-SESSION_COOKIE_AGE = 300  # 5 minutos (em segundos)
+SESSION_COOKIE_AGE = 1200  # 20 minutos (em segundos)
 SESSION_SAVE_EVERY_REQUEST = True  # Reinicia o contador a cada requisição
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
