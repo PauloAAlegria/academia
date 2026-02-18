@@ -1,9 +1,7 @@
 .musica-section {
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 100px 20px 60px; /* 100px no topo compensa a navbar fixa */
-  min-height: 90vh;
+  padding: 100px 20px 60px;
   background: linear-gradient(to right, #1e1e1e, #2b2b2b);
   color: #ffffff;
 }
@@ -34,8 +32,14 @@
   margin: 0;
 }
 
+.conteudo-instruments {
+  width: 100%;
+  overflow-x: auto;   /* 🔥 isto é o mais importante */
+}
+
 .conteudo-instruments table {
   width: 100%;
+  min-width: 600px;   /* impede esmagamento */
   border-collapse: collapse;
   margin: 20px 0;
 }
@@ -45,6 +49,7 @@
   border: 1px solid #ccc;
   padding: 8px 12px;
   text-align: left;
+  overflow-wrap: anywhere; /* 🔥 evita palavras gigantes */
 }
 
 .conteudo-instruments th {
@@ -62,10 +67,8 @@
     font-size: 1.1rem;
   }
 
-  .conteudo-instruments table {
-    display: block;
-    overflow-x: auto;
-    font-size: 1.1rem;
+  .container-course {
+    width: 100%;
   }
 }
 
@@ -75,10 +78,6 @@
   }
 
   .subtitulo {
-    font-size: 1rem;
-  }
-
-  .conteudo-instruments table {    
     font-size: 1rem;
   }
 }
