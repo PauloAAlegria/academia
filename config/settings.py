@@ -69,7 +69,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # login e logout personalizado
-LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_REDIRECT_URL = '/academia/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Database

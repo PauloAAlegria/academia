@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const blocosGaleria = document.querySelectorAll('.galeria-container .item-galeria');
   const paginacao = document.getElementById('paginacao');
 
-  const imagensPorPagina = 6; // Quantidade de imagens exibidas por página
+  const imagensPorPagina = 8; // Quantidade de imagens exibidas por página
   let paginaAtual = 1; // Página ativa
 
   const totalPaginas = Math.ceil(blocosGaleria.length / imagensPorPagina);

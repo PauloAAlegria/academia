@@ -47,11 +47,11 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   border: 3px solid #fff; /* moldura branca destacada */
   background: #fff; /* reforça a moldura se a imagem tiver fundo transparente */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.8s ease, box-shadow 0.3s ease;
 }
 
 .event-image:hover {
-  transform: scale(1.95);
+  transform: scale(1.95)translateX(30px) rotateY(15deg) rotateX(5deg);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 

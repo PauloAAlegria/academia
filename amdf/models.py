@@ -103,6 +103,7 @@ class Footer(models.Model):
     logo_ed = models.ImageField(upload_to='logos_rodapé/%Y/%m', blank=True, null=True, verbose_name='Logo Educação')
     link_facebook = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do Facebook')
     link_instagram = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do Instagram')
+    link_youtube = models.URLField(max_length=500, blank=True, null=True, verbose_name='Link do youtube')
     address = HTMLField(blank=True, default="", verbose_name='Morada')
     contact = models.CharField(max_length=100, blank=True, default="", help_text="Exemplo: '+351 000 000 000'", verbose_name='Telemóvel/Telefone')
     email = models.CharField(max_length=100, blank=True, default="", verbose_name='Email')

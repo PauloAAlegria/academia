@@ -9,6 +9,8 @@ import logging
 from django.db.models.signals import pre_delete
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
+from django.core.files.storage import default_storage
+import time
 
 # Lista de apps que suportam mídia (para limitar a aplicação dos sinais a apps específicos)
 APPS_COM_SUPORTE_A_MEDIA = ['amdf', 'event', 'festival', 'polo', 'team']  # apenas modelos da apps
@@ -37,10 +39,27 @@ Exclui o arquivo físico se ele existir no sistema de arquivos,
 e remove diretórios vazios acima dele.
 """
 def delete_file(file_field):
-    if file_field and hasattr(file_field, 'path') and os.path.isfile(file_field.path):
-        path = file_field.path
-        os.remove(path)
-        delete_empty_parent_folders(path)
+    if not file_field:
+        return
+
+    file_name = getattr(file_field, 'name', None)
+    file_path = getattr(file_field, 'path', None)
+
+    # tenta apagar várias vezes (resolve lock do Windows)
+    if file_name:
+        for _ in range(3):
+            try:
+                default_storage.delete(file_name)
+                break
+            except PermissionError:
+                time.sleep(0.5)
+
+    # limpar pastas
+    if file_path and os.path.exists(file_path):
+        try:
+            delete_empty_parent_folders(file_path)
+        except Exception:
+            pass
 
 
 """

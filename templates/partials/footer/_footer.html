@@ -30,6 +30,11 @@
             <i class="fab fa-instagram"></i>
           </a>
         {% endif %}
+        {% if footer.link_youtube %}
+          <a href="{{ footer.link_youtube }}" target="_blank" arial-label="Youtube">
+            <i class="fab fa-youtube"></i>
+          </a>
+        {% endif %}
       </div>
     </div>
 
@@ -53,17 +58,15 @@
 
   <!-- Rodapé inferior -->
   <div class="footer-bottom">
-    <p>&copy; {% now "Y" %} Academia de Música e Dança do Fundão. Todos os direitos reservados.</p>
+    <p>&copy; {% now "Y" %} <a href={% url 'admin:index' %}><i class="fa-regular fa-circle-user"></i></a>  Academia de Música e Dança do Fundão. Todos os direitos reservados.</p>
     <p>Desenvolvido por 
     {% if dev_link and dev_link.dev %}
       <a href="{{ dev_link.dev }}" target="_blank">Paulo Alegria</a>
     {% else %}
-      <a href="#">Paulo Alegria</a>
-    {% endif %}</p>   
-    
-    <br> <a href={% url 'admin:index' %}>Admin</a>    
-
+      <a href="#">Paulo Alegria</a> 
+    {% endif %}</p> 
   </div>
+  
 </section>
 <!-- end seção do footer -->
 
