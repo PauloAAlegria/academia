@@ -244,6 +244,7 @@
 
   .course-card {
     max-width: 100%;
+    flex: 0 0 auto; /* alteração para o tamanho dos cards */
   }
 
   .courses-grid {

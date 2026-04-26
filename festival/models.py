@@ -5,10 +5,10 @@ from common.utils import process_image_field
 # model do festival
 class Festival(models.Model):
     img = models.ImageField(upload_to='Festival/%Y/%m', verbose_name='Imagem do Festival', blank=True, null=True)
-    description = HTMLField(verbose_name='Descrição do Evento')    
-    address = models.CharField(max_length=100, verbose_name='Local de Realização')
-    begin_date = models.DateField(verbose_name='Data de Início')
-    end_date = models.DateField(verbose_name='Data de Encerramento')    
+    description = HTMLField(verbose_name='Descrição do Evento', blank=True, default="")    
+    address = models.CharField(max_length=100, verbose_name='Local de Realização', blank=True, default="")
+    begin_date = models.DateField(verbose_name='Data de Início', blank=True, null=True)
+    end_date = models.DateField(verbose_name='Data de Encerramento', blank=True, null=True)    
     link = models.URLField(max_length=500, verbose_name='Link de Informação', blank=True, null=True)
     link_name = models.CharField(max_length=100, verbose_name='Nome do Link', blank=True, default="")
 
