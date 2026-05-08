@@ -22,7 +22,15 @@ class Festival(models.Model):
 
     #alteração redimensionar imagem    
     def save(self, *args, **kwargs):
-        process_image_field(self.img)
+        if self.pk:
+            old = Festival.objects.filter(pk=self.pk).first()
+
+            if old and old.img != self.img:
+                process_image_field(self.img)
+
+        elif self.img:
+            process_image_field(self.img)
+
         super().save(*args, **kwargs)
 
     
